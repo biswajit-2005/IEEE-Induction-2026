@@ -1,4 +1,9 @@
+/*
+ this function will  not work untill a verified domain is added
+*/
+
 const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 const sendMail = async (
   email,
   name,
@@ -10,6 +15,7 @@ const sendMail = async (
   technical,
   nontechnical,
 ) => {
+  const resend = new Resend(process.env.RESEND_KEY);
   // Tech groups
   const techGroups = {
     Hackathon: "https://chat.whatsapp.com/TECH_EVENT_1",
@@ -26,19 +32,20 @@ const sendMail = async (
   const techLink = techGroups[technical];
   const nonTechLink = nonTechGroups[nontechnical];
 
-  //create a transporter inside sendMail
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+  //create a transporter inside sendMail//nodemailer
+  // const transporter = nodemailer.createTransport({
+  //   host: "smtp.gmail.com",
+  //   port: 587,
+  //   secure: false,
+  //   auth: {
+  //     user: process.env.EMAIL_USER,
+  //     pass: process.env.EMAIL_PASS,
+  //   },
+  // });
 
-  await transporter.sendMail({
-    from: `"IEEE-VSSUT-STUDENT-BRANCH" <${process.env.EMAIL_USER}>`,
+  // await transporter.sendMail({
+  await resend.emails.send({
+    from: "IEEE VSSUT <onboarding@resend.dev>",
     to: email,
     subject: "🎉 Induction Registration Confirmed",
     html: `

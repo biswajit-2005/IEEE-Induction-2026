@@ -51,22 +51,22 @@ const savestudents = async (req, res) => {
     }
 
     //send mail
-    try {
-      await sendMail(
-        email,
-        name,
-        registration_number,
-        phone_number,
-        Branch,
-        Year,
-        section,
-        technical,
-        nontechnical,
-      );
-      console.log("Email sent successfully");
-    } catch (error) {
-      console.log("Error sending email:", error);
-    }
+    // try {
+    //   await sendMail(
+    //     email,
+    //     name,
+    //     registration_number,
+    //     phone_number,
+    //     Branch,
+    //     Year,
+    //     section,
+    //     technical,
+    //     nontechnical,
+    //   );
+    //   console.log("Email sent successfully");
+    // } catch (error) {
+    //   console.log("Error sending email:", error);
+    // }
 
     res.status(201).json(newstudent);
   } catch (error) {
