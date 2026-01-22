@@ -231,7 +231,7 @@ function Registration({ themes, setThemes }) {
                 Choose your Non-Technical domain
               </option>
               <option value="GD">GD</option>
-              <option value="Video_editing">Video Editing</option>
+              <option value="Video">Video Editing</option>
               <option value="Content">Content</option>
             </select>
           </div>
