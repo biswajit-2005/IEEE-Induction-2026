@@ -194,20 +194,14 @@ function Registration({ themes, setThemes }) {
 
           <div ref={section_ref} className="mb-4">
             <label className="block mb-2">Section</label>
-            <select
+            <input
               value={section}
               onChange={(e) => setSection(e.target.value)}
+              type="text"
+              placeholder="Enter your section"
               required
               className="w-full p-3 rounded-lg bg-gray-100 text-black"
-            >
-              <option value="" disabled>
-                Select your section
-              </option>
-              <option value="A">Section A</option>
-              <option value="B">Section B</option>
-              <option value="C">Section C</option>
-              <option value="D">Section D</option>
-            </select>
+            />
           </div>
 
           <div ref={tech_ref} className="mb-4">

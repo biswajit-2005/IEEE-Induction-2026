@@ -45,6 +45,8 @@ function Dashboard({ themes, setThemes }) {
         >
           <h2 className=" flex justify-center text-2xl font-semibold mb-3">
             📩Check Your Email for whatsapp group link <br />
+          </h2>
+          <h2 className=" flex justify-center text-2xl font-semibold mb-3">
             📢 Join Our WhatsApp Group
           </h2>
           <p className="mb-4 flex justify-center">
@@ -68,7 +70,7 @@ function Dashboard({ themes, setThemes }) {
               Join Non-Technical WhatsApp Group
             </a>
           </div> */}
-          <p className="text-sm">
+          <p className="text-sm flex justify-center">
             *Clicking the group link will redirect you to WhatsApp.
           </p>
         </div>

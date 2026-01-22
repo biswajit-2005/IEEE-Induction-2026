@@ -19,7 +19,7 @@ function Home({ title, themes, setThemes }) {
       ease: "power3.out",
       delay: 0.8,
     });
-    
+
     gsap.to([second.current, sixth.current, seventh.current], {
       opacity: 1,
       y: 0,
@@ -48,28 +48,34 @@ function Home({ title, themes, setThemes }) {
           {title}
         </h1>
 
-        <div  className="basis-[45%] mb-4 mt-3 flex justify-end items-center flex-row">
-          <button 
+        <div className="basis-[45%] mb-4 mt-3 flex justify-end items-center flex-row">
+          <button
             className="lg:hidden mr-6 text-4xl"
             onClick={() => setShowMenu(!showMenu)}
           >
             ☰
           </button>
 
-          <ul className="items-center px-5 sm:hidden hidden lg:flex text-center text-2xl">
-            <li ref={second} className="mx-10 opacity-0 hover:text-[cyan]">
-                <Link to="/">Home</Link>
+          <ul className="items-center px-5 sm:hidden hidden lg:flex text-center text-2xl gap-4">
+            <li
+              ref={second}
+              className="opacity-0 border-2 border-blue-600 rounded-2xl px-4 py-2 bg-blue-600 text-white hover:bg-white hover:text-blue-600 cursor-pointer transition-all duration-300"
+            >
+              <Link to="/">Home</Link>
             </li>
 
-            <li ref={sixth} className="mx-10 opacity-0 hover:text-[cyan]">
-              <button onClick={() => setThemes(!themes)}>
+            <li ref={sixth} className="opacity-0">
+              <button
+                onClick={() => setThemes(!themes)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-2xl border-2 border-blue-600 hover:bg-white hover:text-blue-600 hover:border-blue-600 transition-all duration-300"
+              >
                 {themes ? "☀️" : "🌙"}
               </button>
             </li>
 
             <li
               ref={seventh}
-              className="border-[5] opacity-0 rounded-2xl border-white px-3 py-1 hover:bg-white hover:text-black cursor-pointer"
+              className="opacity-0 border-2 border-blue-600 rounded-2xl px-4 py-2 bg-blue-600 text-white hover:bg-white hover:text-blue-600 hover:border-blue-600 cursor-pointer transition-all duration-300"
             >
               <Link to="/registration">👤</Link>
             </li>
@@ -84,18 +90,18 @@ function Home({ title, themes, setThemes }) {
           showMenu ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <li className="my-5 hover:text-cyan-400 cursor-pointer">
-           <Link to="/">Home</Link>
-          </li>
+        <li className="my-5 border-2 border-blue-600 rounded-2xl px-4 py-2 bg-blue-600 text-white hover:bg-white hover:text-blue-600 cursor-pointer inline-block transition-all duration-300">
+          <Link to="/">Home</Link>
+        </li>
 
         <li
-          className="my-5 hover:text-cyan-400 cursor-pointer"
+          className="my-5 px-4 py-2 bg-blue-600 text-white rounded-2xl border-2 border-blue-600 hover:bg-white hover:text-blue-600 cursor-pointer inline-block transition-all duration-300"
           onClick={() => setThemes(!themes)}
         >
           {themes ? "🌙 Dark" : "☀️ Light"}
         </li>
 
-        <li className="border-[5] rounded-2xl border-white px-3 py-1 hover:bg-white hover:text-black cursor-pointer">
+        <li className="my-5 border-2 border-blue-600 rounded-2xl px-4 py-2 bg-blue-600 text-white hover:bg-white hover:text-blue-600 cursor-pointer inline-block transition-all duration-300">
           <Link to="/registration">👤</Link>
         </li>
       </ul>
@@ -104,4 +110,3 @@ function Home({ title, themes, setThemes }) {
 }
 
 export default Home;
-
