@@ -171,6 +171,7 @@ function Registration({ themes, setThemes }) {
               <option value="FS">FS</option>
               <option value="BM">BM</option>
               <option value="PE">PE</option>
+              <option value="SM">SM</option>
             </select>
           </div>
 
@@ -230,9 +231,9 @@ function Registration({ themes, setThemes }) {
               <option value="" disabled>
                 Choose your Non-Technical domain
               </option>
-              <option value="GD">GD</option>
+              <option value="GD">Graphics Design</option>
               <option value="Video">Video Editing</option>
-              <option value="Content">Content</option>
+              <option value="Content">Content Writing</option>
             </select>
           </div>
 
