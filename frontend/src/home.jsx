@@ -56,26 +56,20 @@ function Home({ title, themes, setThemes }) {
             ☰
           </button>
 
-          <ul className="items-center px-5 sm:hidden hidden lg:flex text-center text-2xl gap-4">
-            <li
-              ref={second}
-              className="opacity-0 border-2 border-blue-600 rounded-2xl px-4 py-2 bg-blue-600 text-white hover:bg-white hover:text-blue-600 cursor-pointer transition-all duration-300"
-            >
+          <ul className="items-center px-5 sm:hidden hidden lg:flex text-center text-2xl">
+            <li ref={second} className="mx-10 opacity-0 hover:text-[cyan]">
               <Link to="/">Home</Link>
             </li>
 
-            <li ref={sixth} className="opacity-0">
-              <button
-                onClick={() => setThemes(!themes)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-2xl border-2 border-blue-600 hover:bg-white hover:text-blue-600 hover:border-blue-600 transition-all duration-300"
-              >
+            <li ref={sixth} className="mx-10 opacity-0 hover:text-[cyan]">
+              <button onClick={() => setThemes(!themes)}>
                 {themes ? "☀️" : "🌙"}
               </button>
             </li>
 
             <li
               ref={seventh}
-              className="opacity-0 border-2 border-blue-600 rounded-2xl px-4 py-2 bg-blue-600 text-white hover:bg-white hover:text-blue-600 hover:border-blue-600 cursor-pointer transition-all duration-300"
+              className="border-[5] opacity-0 rounded-2xl border-white px-3 py-1 hover:bg-white hover:text-black cursor-pointer"
             >
               <Link to="/registration">👤</Link>
             </li>

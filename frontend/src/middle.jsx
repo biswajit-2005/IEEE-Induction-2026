@@ -55,7 +55,7 @@ function Middle({ themes, setThemes }) {
 
         <h1
           ref={welcome}
-          className="flex justify-center text-5xl font-bold mb-6 mt-7"
+          className="flex justify-center text-4xl font-bold mb-6 mt-7"
         >
           Welcome to IEEE
         </h1>
