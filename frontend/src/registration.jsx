@@ -166,12 +166,14 @@ function Registration({ themes, setThemes }) {
               <option value="ETC">ETC</option>
               <option value="EEE">EEE</option>
               <option value="EE">EE</option>
+              <option value="CIVIL">CIVIL</option>
               <option value="ME">ME</option>
               <option value="CE">CE</option>
-              <option value="FS">FS</option>
-              <option value="BM">BM</option>
+              <option value="MME">MME</option>
+              <option value="SFE">SFE</option>
+              <option value="BME">BME</option>
               <option value="PE">PE</option>
-              <option value="SM">SM</option>
+              <option value="MSM">MSM</option>
             </select>
           </div>
 
