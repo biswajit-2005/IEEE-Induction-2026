@@ -70,13 +70,13 @@ function Dashboard({ themes, setThemes }) {
 
           <ul className="space-y-3">
             <li className="border-b border-gray-600 pb-2">
-              💡 IEEE Quiz Exam – <span className="text-cyan-400">Feb 1</span>
+              💡 IEEE Quiz Exam – <span className="text-cyan-400">31st Jan-2 Feb</span>
             </li>
             <li className="border-b border-gray-600 pb-2">
-              👨‍🎓 Online Interview – <span className="text-cyan-400">Feb 8</span>
+              👨‍🎓 PI (Online)– <span className="text-cyan-400">5th-7th Feb</span>
             </li>
             <li>
-              🏆 Offline interview <span className="text-cyan-400">Feb 10</span>
+              🏆 PI (Offline)- <span className="text-cyan-400">9th-10 Feb</span>
             </li>
           </ul>
         </div>

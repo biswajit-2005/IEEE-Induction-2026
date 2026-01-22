@@ -11,16 +11,26 @@ import Footer from "./footer";
 
 function Middle({ themes, setThemes }) {
 
+
+
+
+
   const welcome = useRef(null);
   const paragraph = useRef(null);
   const button = useRef(null);    
+const logo = useRef(null);
+
 
   useGSAP(() => {
     const tl = gsap.timeline();
+    tl.fromTo(logo.current,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 1, ease: "circ.out", delay: 2}
+    );
     tl.fromTo(
       welcome.current,
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 2.5 }
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
     );
     tl.fromTo(
       paragraph.current,
@@ -32,6 +42,8 @@ function Middle({ themes, setThemes }) {
       { opacity: 0, y: -100 },
       { opacity: 1, y: 0, duration: 1, ease: "bounce.out"}
     );
+
+
   },[]);
 
   return (
@@ -44,7 +56,15 @@ function Middle({ themes, setThemes }) {
       <div className={`flex flex-col items-center justify-center min-h-screen px-0 ${
         themes ? "bg-white text-black" : "bg-black text-white"
       }`}>
-        <h1 ref={welcome} className="text-5xl font-bold mb-6 mt-24">Welcome to IEEE</h1>
+<div ref={logo} className="flex justify-center mt-10 mb-6">
+  <img
+    src="./IEEE.png"
+    alt="IEEE Logo"
+    className="w-20 h-auto md:w-20"
+  />
+</div>
+
+        <h1 ref={welcome} className="flex justify-center text-5xl font-bold mb-6 mt-7">Welcome to IEEE</h1>
         <p ref={paragraph} className="text-2xl mb-6 text-center px-4">
           Join us in advancing technology for humanity. Explore our events,
           publications, and membership benefits.

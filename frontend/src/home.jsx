@@ -19,7 +19,7 @@ function Home({ title, themes, setThemes }) {
       ease: "power3.out",
       delay: 0.8,
     });
-
+    
     gsap.to([second.current, sixth.current, seventh.current], {
       opacity: 1,
       y: 0,
@@ -43,13 +43,13 @@ function Home({ title, themes, setThemes }) {
       >
         <h1
           ref={titleref}
-          className="text-6xl ml-7 opacity-0 font-bold basis-[55%] md:text-left mx-2 font-stretch-110% text-bl text-[#5305ee] hover:transition-transform hover:scale-105 duration-300 cursor-pointer"
+          className="lg:text-6xl text-5xl ml-3 opacity-0 font-bold basis-[55%] md:text-left mx-2 font-stretch-110% text-bl text-[#5305ee] hover:transition-transform hover:scale-105 duration-300 cursor-pointer"
         >
           {title}
         </h1>
 
-        <div className="basis-[45%] mb-6 flex justify-end items-center flex-row">
-          <button
+        <div  className="basis-[45%] mb-4 mt-3 flex justify-end items-center flex-row">
+          <button 
             className="lg:hidden mr-6 text-4xl"
             onClick={() => setShowMenu(!showMenu)}
           >
