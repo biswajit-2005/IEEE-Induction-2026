@@ -332,3 +332,354 @@ function Three1() {
 export default Three1;
 
 
+
+
+
+
+
+
+
+
+
+
+import { useState } from "react";
+import Middle from "./middle.jsx";
+import Registration from "./registration.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Dashboard from "./dashboard.jsx";
+import BackgroundThree from "./BackgroundThree.jsx";
+
+function App() {
+  const [themes, setThemes] = useState(false);
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Middle themes={themes} setThemes={setThemes} />,
+    },
+    {
+      path: "/registration",
+      element: <Registration themes={themes} setThemes={setThemes} />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard themes={themes} setThemes={setThemes} />,
+    },
+  ]);
+
+  return (
+    <div
+      className={`min-h-screen transition-colors duration-500 ${
+        themes ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      <BackgroundThree/>
+      <RouterProvider router={router} />
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+export default function BackgroundThree() {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true, // transparent background
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    mountRef.current.appendChild(renderer.domElement);
+
+    // ✨ PARTICLES
+    const particlesCount = 1500;
+    const positions = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 20;
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+
+    const material = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.02,
+      transparent: true,
+      opacity: 0.8,
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // 🎞️ ANIMATION
+    const animate = () => {
+      particles.rotation.y += 0.0005;
+      particles.rotation.x += 0.0003;
+      renderer.render(scene, camera);
+    };
+
+    renderer.setAnimationLoop(animate);
+
+    // 📐 RESIZE
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // 🧹 CLEANUP
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      renderer.dispose();
+      mountRef.current.innerHTML = "";
+    };
+  }, []);
+
+  return <div className="three-bg" ref={mountRef} />;
+}
+
+
+
+
+
+
+
+
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+export default function BackgroundThree() {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true, // transparent background
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    mountRef.current.appendChild(renderer.domElement);
+
+    // ✨ PARTICLES
+    const particlesCount = 1500;
+    const positions = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 20;
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+
+    const material = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.02,
+      transparent: true,
+      opacity: 0.8,
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // 🎞️ ANIMATION
+    const animate = () => {
+      particles.rotation.y += 0.0005;
+      particles.rotation.x += 0.0003;
+      renderer.render(scene, camera);
+    };
+
+    renderer.setAnimationLoop(animate);
+
+    // 📐 RESIZE
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // 🧹 CLEANUP
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      renderer.dispose();
+      mountRef.current.innerHTML = "";
+    };
+  }, []);
+
+  return <div className="three-bg" ref={mountRef} />;
+}
+
+
+
+
+
+
+
+
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+export default function IEEEThree({ themes }) {
+  const mountRef = useRef(null);
+  const cubeRef = useRef(null);
+  const materialsRef = useRef([]);
+
+  useEffect(() => {
+    if (!mountRef.current) return;
+
+    // Scene
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 6;
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    mountRef.current.appendChild(renderer.domElement);
+
+    // Lights
+    scene.add(new THREE.AmbientLight(0xffffff, 1));
+    const light = new THREE.DirectionalLight(0xffffff, 7);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    // Texture loader
+    const loader = new THREE.TextureLoader();
+    const imagePaths = [
+      "/IEEE.png",
+      "/cs1.png",
+      "/cas.png",
+      "/comsoc.png",
+      "/Sensor.png",
+      "/wie.png",
+    ];
+
+    const materials = imagePaths.map((path) => {
+      const texture = loader.load(path);
+      texture.colorSpace = THREE.SRGBColorSpace;
+
+      return new THREE.MeshStandardMaterial({
+        map: texture,
+        side: THREE.DoubleSide,
+      });
+    });
+
+    materialsRef.current = materials;
+
+    // Cube
+    const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), materials);
+    cube.scale.set(4, 4, 4);
+    scene.add(cube);
+
+    cubeRef.current = cube;
+
+    // Animation
+    const animate = () => {
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      cube.rotation.z += 0.01;
+      renderer.render(scene, camera);
+    };
+    renderer.setAnimationLoop(animate);
+
+    // Resize
+    const onResize = () => {
+      const w = mountRef.current.clientWidth;
+      const h = mountRef.current.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+    window.addEventListener("resize", onResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", onResize);
+      renderer.setAnimationLoop(null);
+      renderer.dispose();
+      mountRef.current.innerHTML = "";
+    };
+  }, []);
+
+  // ⚡ Update theme colors
+ useEffect(() => {
+  if (!materialsRef.current.length) return;
+
+  const emissiveColor = themes ? 0x000000 : 0x222222;
+
+  materialsRef.current.forEach((mat) => {
+    mat.emissive.setHex(emissiveColor);
+  });
+}, [themes]);
+
+
+  return (
+    <div
+      ref={mountRef}
+      style={{
+        width: "100%",
+        height: "55vh",
+      zIndex:"0",
+      }}
+    />
+  );
+}

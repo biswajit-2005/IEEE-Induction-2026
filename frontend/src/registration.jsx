@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Home from "./home.jsx";
-import Dashboard from "./dashboard.jsx";
+
 
 function Registration({ themes, setThemes }) {
   const heading = useRef(null);
@@ -109,7 +109,7 @@ function Registration({ themes, setThemes }) {
           themes ? "bg-white text-black" : "bg-black text-white"
         }`}
       >
-        <h1 ref={heading} className="text-4xl font-bold mb-6">
+        <h1 ref={heading} className="text-4xl font-bold mb-6 lg:mt-20">
           Registration
         </h1>
 

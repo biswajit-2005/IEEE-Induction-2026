@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Footer from "./footer";
 
+
+
 function Middle({ themes, setThemes }) {
   const welcome = useRef(null);
   const paragraph = useRef(null);
@@ -45,7 +47,7 @@ function Middle({ themes, setThemes }) {
           themes ? "bg-white text-black" : "bg-black text-white"
         }`}
       >
-        <div ref={logo} className="flex justify-center mt-10 mb-6">
+        <div ref={logo} className="flex justify-center mt-10 mb-6 lg:mt-22">
           <img
             src="./IEEE.png"
             alt="IEEE Logo"
@@ -70,6 +72,8 @@ function Middle({ themes, setThemes }) {
         >
           Register Now
         </Link>
+
+
 
         <Footer themes={themes} />
       </div>
