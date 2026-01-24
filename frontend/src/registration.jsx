@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Home from "./home.jsx";
 
-
 function Registration({ themes, setThemes }) {
   const heading = useRef(null);
   const full_name = useRef(null);
@@ -236,6 +235,9 @@ function Registration({ themes, setThemes }) {
               <option value="GD">Graphics Design</option>
               <option value="Video">Video Editing</option>
               <option value="Content">Content Writing</option>
+              <option value="PublicSpaeking">Public Speaking</option>
+              <option value="Reasearch">Reasearch and Analysis</option>
+              <option value="Management">Management and PR</option>
             </select>
           </div>
 
