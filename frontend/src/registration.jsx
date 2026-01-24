@@ -235,8 +235,8 @@ function Registration({ themes, setThemes }) {
               <option value="GD">Graphics Design</option>
               <option value="Video">Video Editing</option>
               <option value="Content">Content Writing</option>
-              <option value="PublicSpaeking">Public Speaking</option>
-              <option value="Reasearch">Reasearch and Analysis</option>
+              <option value="PublicSpeaking">Public Speaking</option>
+              <option value="Research">Research and Analysis</option>
               <option value="Management">Management and PR</option>
             </select>
           </div>
