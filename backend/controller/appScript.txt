@@ -1,0 +1,183 @@
+//open google shhet -> Extension -> App script -> pastecode -> save -> deploy as webapp -> give permission in advance setting -> And ALL DONE
+function doPost(e) {
+  const sheet = SpreadsheetApp
+    .getActiveSpreadsheet()
+    .getActiveSheet();
+
+  // Extract values
+  const name = e.parameter.name;
+  const reg = e.parameter.registration_number;
+  const email = e.parameter.email;
+  const phone = e.parameter.phone_number;
+  const branch = e.parameter.Branch;
+  const year = e.parameter.Year;
+  const section = e.parameter.section;
+  const technical = e.parameter.technical;
+  const nontechnical = e.parameter.nontechnical;
+
+  // Append to sheet
+  sheet.appendRow([
+    name,
+    reg,
+    email,
+    phone,
+    branch,
+    year,
+    section,
+    technical,
+    nontechnical,
+    new Date(),
+    "SENT"   // status column
+  ]);
+//mapping 
+// Display names
+const techDisplay = {
+  Electronics: "Electronics Society",
+  Computer: "Computer Society",
+};
+
+const nonTechDisplay = {
+  GD: "Graphic Designing",
+  Content: "Content Writing",
+  Video: "Video Editing",
+  PublicSpeaking: "Public Speaking",
+  Research: "Research and Analysis",
+  Management: "Management and PR",
+};
+// Syllabus (2–3 lines each)
+const techSyllabus = {
+  Electronics: `
+The selection test will include aptitude questions, core electrical concepts, and basic electronics fundamentals. Candidates will also be tested on general awareness about IEEE and its activities.
+`,
+
+  Computer: `
+The test will cover aptitude, basic knowledge about IEEE, and fundamentals of programming. Focus will be on logical thinking ,problem-solving, and basic coding concepts.
+`
+};
+// Non-tech syllabus
+const nonTechSyllabus = {
+  GD: `Learn basic graphic design using Canva and Photoshop. You will be assigned tasks, and based on your performance, you will be inducted.`,
+  
+  Content: `Improve writing skills for blogs, social media and documentation. Learn content planning and storytelling. You will be assigned tasks, and based on your performance, you will be inducted.`,
+  
+  Video: `Learn basic video shooting techniques, cinematography, and editing using tools like CapCut or Premiere Pro. You will be assigned tasks, and based on your performance, you will be inducted.`,
+
+  PublicSpeaking: `Improve communication skills, stage confidence, and presentation techniques through activities and speaking tasks.`,
+
+  Research: `Learn how to research topics, analyze data, and prepare reports for academic and technical work.You will be assigned tasks, and based on your performance, you will be inducted.`,
+
+  Management: `Learn event management, teamwork, leadership skills, and public relations through real organizational tasks.`
+};
+
+
+  // WhatsApp groups
+  const techGroups = {
+    Electronics: "https://chat.whatsapp.com/KmS64pCXsJP8iwU0e08cS2",
+    Computer: "https://chat.whatsapp.com/CzhJSAgwcfYBSFNLMmzaPP",
+  };
+
+  const nonTechGroups = {
+    GD: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+    Content: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+    Video: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+    PublicSpeaking: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+    Research: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+    Management: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+  };
+
+  const techLink = techGroups[technical] || "";
+  const nonTechLink = nonTechGroups[nontechnical] || "";
+
+  // Email HTML
+  const htmlBody = `
+  <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; border:1px solid #ddd; padding:20px;">
+    
+    <h2 style="color:#2c3e50;">Hello ${name},</h2>
+    <p>Your registration for the ANWESHAN has been succesfully completed.</p>
+
+    <h3>Your Registration Details</h3>
+    <p><b>Reg No:</b> ${reg}</p>
+    <p><b>Branch:</b> ${branch}</p>
+    <p><b>Technical Domain:</b> ${techDisplay[technical] || technical}</p>
+    <p>${techSyllabus[technical] || "Syllabus will be shared in WhatsApp group."}
+    </p>
+     <p><b>Non tech Domain:</b> ${nonTechDisplay[nontechnical] || nontechnical}</p>
+     <p>${nonTechSyllabus[nontechnical] || "You will be assigned tasks, and based on your performance, you will be inducted."}
+    </p>
+    <div style="background:#f1f1f1; padding:15px; margin-top:15px;">
+      <p><b>Join WhatsApp Groups:</b></p>
+
+      ${techLink ? `
+        <p><b>${techDisplay[technical] || technical}</b></p>
+        <a href="${techLink}" 
+           style="background:#25D366; color:white; padding:10px 15px;
+                  text-decoration:none; border-radius:5px; display:inline-block;">
+          Join Technical WhatsApp
+        </a>
+        <br><br>
+      ` : ""}
+
+      ${nonTechLink ? `
+        <p><b>${nonTechDisplay[nontechnical] || nontechnical}</b></p>
+        <a href="${nonTechLink}" 
+           style="background:#25D366; color:white; padding:10px 15px;
+                  text-decoration:none; border-radius:5px; display:inline-block;">
+          Join Non-Technical WhatsApp
+        </a>
+      ` : ""}
+    </div>
+    <hr>
+
+<p><b>Important Dates:</b></p>
+
+<table style="width:100%; border-collapse: collapse;">
+  <tr>
+    <td>Registration Deadline</td>
+    <td><b>30th January</b></td>
+  </tr>
+  <tr>
+    <td>Round 1</td>
+    <td><b>31st January</b></td>
+  </tr>
+  <tr>
+    <td>Round 1 Result</td>
+    <td><b>3rd February</b></td>
+  </tr>
+  <tr>
+    <td>PI Round 1</td>
+    <td><b>5th - 7th February</b></td>
+  </tr>
+  <tr>
+    <td>PI Round 1 Result</td>
+    <td><b>8th February</b></td>
+  </tr>
+  <tr>
+    <td>PI Round 2</td>
+    <td><b>9th - 10th February</b></td>
+  </tr>
+  <tr>
+    <td><b>Final Result Announcement</b></td>
+    <td><b>15th February</b></td>
+  </tr>
+</table>
+
+
+
+    <br>
+    <p>Regards,<br><b>IEEE VSSUT Student Branch</b></p>
+  </div>
+`;
+
+
+  // Send email (FREE via Google)
+  GmailApp.sendEmail(
+    email,
+    "ANWESHAN Registration Confirmed",
+    "",
+    { htmlBody: htmlBody }
+  );
+
+  return ContentService
+    .createTextOutput("Student Registered & Email Sent")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
