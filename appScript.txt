@@ -1,4 +1,8 @@
-//open google shhet -> Extension -> App script -> pastecode -> save -> deploy as webapp -> give permission in advance setting -> And ALL DONE
+//open google shhet -> Extension -> App script -> pastecode -> save -> deploy as webapp -> give permission in advance setting -> And ALL DONE👍
+
+
+
+
 function doPost(e) {
   const sheet = SpreadsheetApp
     .getActiveSpreadsheet()
@@ -72,8 +76,8 @@ const nonTechSyllabus = {
 
   // WhatsApp groups
   const techGroups = {
-    Electronics: "https://chat.whatsapp.com/KmS64pCXsJP8iwU0e08cS2",
-    Computer: "https://chat.whatsapp.com/CzhJSAgwcfYBSFNLMmzaPP",
+    Electronics: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
+    Computer: "https://chat.whatsapp.com/xxxxxxxxxxxxx",
   };
 
   const nonTechGroups = {
